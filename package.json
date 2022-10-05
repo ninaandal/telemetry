@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/ninaandal/telemetry/issues"
   },
-  "homepage": "https://github.com/ninaandal/telemetry#readme"
+  "homepage": "https://github.com/ninaandal/telemetry#readme",
+  "dependencies": {
+    "cross-fetch": "^3.1.5"
+  }
 }

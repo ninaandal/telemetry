@@ -1,17 +1,8 @@
-interface TelemetryPayload {
-  userId: string;
-  event: TELEMETRY_EVENT | string;
-  metadata?: Record<string, string>;
-  telemetryDisabled: boolean; //If the user has disabled telemetry, this is true
-}
-
-enum TELEMETRY_EVENT {
-  BUTTON_CLICK = "buttonClick",
-}
+const { Console } = require("console");
 
 const PROXY_ENDPOINT = "https://www.sanity.io/intake/dp/v1/track";
 
-const getPayload = ({ event, metadata = {}, userId }: TelemetryPayload) =>
+const getPayload = ({ event, metadata = {}, userId }) =>
   JSON.stringify({
     userId: userId,
     event: "studio-telemetry",
@@ -27,14 +18,12 @@ const getPayload = ({ event, metadata = {}, userId }: TelemetryPayload) =>
     timestamp: new Date().toISOString(),
   });
 
-const telemetryClient = ({
-  event,
-  metadata,
-  userId,
-  telemetryDisabled,
-}: TelemetryPayload) => {
+const telemetryClient = ({ event, metadata, userId, telemetryDisabled }) => {
+  const fetch = require("cross-fetch");
+
   //If you set the env variable to 1, you will turn the tracking off. Anything else, and this fetch will run
   if (!telemetryDisabled) {
+    console.log(fetch);
     fetch(PROXY_ENDPOINT, {
       method: "POST", // or 'PUT'
       headers: {
