@@ -35,5 +35,7 @@ This way, the user can either disable telemetry with an env var or per studio in
 
 ### Notes on current state:
 The CLI needs of the telemetry are different than the studio (using require vs import) and as of right now we have something working for the cli and studio but the codes are slightly different, they would need to be bundled and built so that we can have it work on both use cases (I think).
-Branch for CLI: add-timer-cli
-Branch for Studio: add-timer-studio
+
+Branch for CLI: `add-timer-cli`
+
+Branch for Studio: `add-timer-studio`
